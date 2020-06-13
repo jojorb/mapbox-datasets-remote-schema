@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: mdillon/postgis
+    container_name: ${DB_HOST}
+    networks:
+      - external-nginx-proxy
+    ports:
+      - "${DB_PORT}:5432"
+    restart: always
+    volumes:
+      - ./db_gis:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    restart: unless-stopped
+
+
+  hasura:
+    image: hasura/graphql-engine:v1.3.0-beta.1
+    container_name: hasura-beta
+    ports:
+      - "${HASURA_PORT}:8080"
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - external-nginx-proxy
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:5432/${POSTGRES_DB}
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+
+networks:
+  external-nginx-proxy:
+    external:
+      name: nginx-proxy-net
+
+volumes:
+  pg:
