@@ -1,5 +1,5 @@
 {
-  "name": "google-places-remote-schema",
+  "name": "mapbox-datasets-remote-schema",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,9 @@
   "author": "Praveen",
   "license": "MIT",
   "dependencies": {
-    "apollo-server": "^2.6.7",
+    "apollo-server": "^2.14.4",
     "esm": "^3.2.25",
-    "graphql": "^14.4.2",
+    "graphql": "^15.1.0",
     "node-fetch": "^2.6.0"
   }
 }

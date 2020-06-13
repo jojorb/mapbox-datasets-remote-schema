@@ -9,9 +9,8 @@ In a second time the [Mapbox Tilequery API](https://docs.mapbox.com/playground/t
 
 ## Insert Sample Data
 
-Some a very basic user id and coordinates into the table.
-Change users coordinates according to your personal datasets,
-we will query data information in a 3000 meters radius.
+Go to SQL tab to ass some very basic user id and coordinates into a new `user_location` table.
+Change users coordinates according to your mapbox datasets, we will query data informations in a 3000 meters radius.
 
 ```sql
 -- User location data
@@ -65,11 +64,41 @@ mutation insertUserLocation(
 
    [![glitch-deploy-button](https://raw.githubusercontent.com/hasura/graphql-engine/master/community/boilerplates/auth-webhooks/nodejs-express/assets/deploy-glitch.png)](http://glitch.com/edit/#!/import/github/RobyRemzy/mapbox-datasets-remote-schema)
 
+MAPBOX_API_KEY='pk.eyJ1IjoicmVtczQyIiwiYSI6ImNqeTRrM3kycDEya3YzZWsyOXhrdjN0M2gifQ.RH339APr-edlezweQx9aKg' TILESET_ID='rems42.ckao6ixtz04ab24rtibcvaj8x-3jlau' yarn start
+
 2. Rename `.env-sample` into `.env` and add the following environment variables.
 
 ```env
 MAPBOX_API_KEY='YOUR-MAPBOX-TOKEN'
 TILESET_ID='YOUR-TILE-ID'
+```
+
+3. Open the app on glitch or local Apollo server to test qickly
+
+> Query
+
+```gql
+query($location: geography!) {
+  places(location: $location) {
+    name
+    address
+    lat
+    lng
+    distance
+    rating
+  }
+}
+```
+
+> Test some coordinates in the variable to query mapbox datasets
+
+```json
+{
+  "location": {
+    "type": "Point",
+    "coordinates": [2.5365543365478516, 48.77236950468487]
+  }
+}
 ```
 
 ### in Hasura console add remote schema
