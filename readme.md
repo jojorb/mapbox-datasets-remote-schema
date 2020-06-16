@@ -64,8 +64,6 @@ mutation insertUserLocation(
 
    [![glitch-deploy-button](https://raw.githubusercontent.com/hasura/graphql-engine/master/community/boilerplates/auth-webhooks/nodejs-express/assets/deploy-glitch.png)](http://glitch.com/edit/#!/import/github/RobyRemzy/mapbox-datasets-remote-schema)
 
-MAPBOX_API_KEY='pk.eyJ1IjoicmVtczQyIiwiYSI6ImNqeTRrM3kycDEya3YzZWsyOXhrdjN0M2gifQ.RH339APr-edlezweQx9aKg' TILESET_ID='rems42.ckao6ixtz04ab24rtibcvaj8x-3jlau' yarn start
-
 2. Rename `.env-sample` into `.env` and add the following environment variables.
 
 ```env
