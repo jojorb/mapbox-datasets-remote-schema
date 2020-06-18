@@ -1,7 +1,13 @@
 # Mapbox datasets remote schema
 
+> Meet Hasura and Mapbox
+
+We store usere Point coord on our Postgres (gis enabled PostGis) and query custom aggregate poi stored inside our Mapbox service as a Tileset.
+
 We first need to create a [Mapbox datasets](https://docs.mapbox.com/api/maps/#datasets).
 In a second time the [Mapbox Tilequery API](https://docs.mapbox.com/playground/tilequery/) allows you to retrieve data about specific features from a vector tileset, based on a given latitude and longitude.
+
+> How to create a simple pipeline to create a Mapbox Tileset from push on Github: [mapbox-tileset-action](https://github.com/RobyRemzy/mapbox-tileset-action)
 
 ## Hasura Postgis with remote schema
 
@@ -9,7 +15,7 @@ In a second time the [Mapbox Tilequery API](https://docs.mapbox.com/playground/t
 
 ## Insert Sample Data
 
-Go to SQL tab to ass some very basic user id and coordinates into a new `user_location` table.
+Go to SQL tab to add some very basic user id and coordinates into a new `user_location` table.
 Change users coordinates according to your mapbox datasets, we will query data informations in a 3000 meters radius.
 
 ```sql
