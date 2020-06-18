@@ -2,7 +2,7 @@
 
 > Meet Hasura and Mapbox
 
-We store usere Point coord on our Postgres (gis enabled PostGis) and query custom aggregate poi stored inside our Mapbox service as a Tileset.
+We store user Point coord on our Postgres (gis enabled PostGis) and query custom aggregate poi stored inside our Mapbox service as a Tileset.
 
 We first need to create a [Mapbox datasets](https://docs.mapbox.com/api/maps/#datasets).
 In a second time the [Mapbox Tilequery API](https://docs.mapbox.com/playground/tilequery/) allows you to retrieve data about specific features from a vector tileset, based on a given latitude and longitude.
@@ -16,7 +16,7 @@ In a second time the [Mapbox Tilequery API](https://docs.mapbox.com/playground/t
 ## Insert Sample Data
 
 Go to SQL tab to add some very basic user id and coordinates into a new `user_location` table.
-Change users coordinates according to your mapbox datasets, we will query data informations in a 3000 meters radius.
+Change users coordinates according to your mapbox datasets, we will query data informations in a 3000 meters radius [in resolver.js](https://github.com/RobyRemzy/mapbox-datasets-remote-schema/blob/master/resolvers.js#L13).
 
 ```sql
 -- User location data
