@@ -15,6 +15,6 @@
     "apollo-server": "^2.14.4",
     "esm": "^3.2.25",
     "graphql": "^15.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   }
 }
